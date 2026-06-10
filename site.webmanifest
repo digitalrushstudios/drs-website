@@ -1,0 +1,21 @@
+{
+  "name": "Digital Rush Studios",
+  "short_name": "DRS",
+  "description": "Cinematic creative direction, rollout visuals, and brand systems.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050506",
+  "theme_color": "#21E8FA",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

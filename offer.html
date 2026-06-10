@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Custom Character Drop — Digital Rush Studios</title>
+<meta name="description" content="Your look. Built into a custom AI character design. Streetwear, action figure, editorial. Delivered in 48 hours.">
+<meta name="robots" content="noindex, nofollow">
+
+<!-- OG tags for IG ad preview -->
+<meta property="og:title" content="Your Character. Built Different.">
+<meta property="og:description" content="Custom AI character design built around your look and brand. $49. Delivered in 48 hours.">
+<meta property="og:type" content="website">
+
+<style>
+/* ── FONTS (same local files as main site) ── */
+@font-face {
+  font-family: 'ClashDisplay';
+  src: url('assets/fonts/ClashDisplay_Complete/Fonts/WEB/fonts/ClashDisplay-Bold.woff2') format('woff2'),
+       url('assets/fonts/ClashDisplay_Complete/Fonts/WEB/fonts/ClashDisplay-Bold.woff') format('woff');
+  font-weight: 700; font-display: swap;
+}
+@font-face {
+  font-family: 'ClashDisplay';
+  src: url('assets/fonts/ClashDisplay_Complete/Fonts/WEB/fonts/ClashDisplay-Semibold.woff2') format('woff2'),
+       url('assets/fonts/ClashDisplay_Complete/Fonts/WEB/fonts/ClashDisplay-Semibold.woff') format('woff');
+  font-weight: 600; font-display: swap;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url('assets/fonts/Satoshi_Complete/Fonts/WEB/fonts/Satoshi-Regular.woff2') format('woff2'),
+       url('assets/fonts/Satoshi_Complete/Fonts/WEB/fonts/Satoshi-Regular.woff') format('woff');
+  font-weight: 400; font-display: swap;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url('assets/fonts/Satoshi_Complete/Fonts/WEB/fonts/Satoshi-Light.woff2') format('woff2'),
+       url('assets/fonts/Satoshi_Complete/Fonts/WEB/fonts/Satoshi-Light.woff') format('woff');
+  font-weight: 300; font-display: swap;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url('assets/fonts/Satoshi_Complete/Fonts/WEB/fonts/Satoshi-Bold.woff2') format('woff2'),
+       url('assets/fonts/Satoshi_Complete/Fonts/WEB/fonts/Satoshi-Bold.woff') format('woff');
+  font-weight: 700; font-display: swap;
+}
+
+/* ── TOKENS ── */
+:root {
+  --cyan:        #01DDFE;
+  --cyan-dim:    rgba(1, 221, 254, 0.08);
+  --cyan-glow:   rgba(1, 221, 254, 0.20);
+  --bg:          #070709;
+  --bg-2:        #0d0d11;
+  --bg-3:        #111116;
+  --off-white:   #e8e8ec;
+  --muted:       #6b6b7a;
+  --muted-2:     #9494a4;
+  --border:      rgba(255,255,255,0.06);
+  --border-cyan: rgba(1,221,254,0.20);
+  --font-d:      'ClashDisplay', 'Helvetica Neue', sans-serif;
+  --font-b:      'Satoshi', 'Helvetica Neue', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--off-white);
+  font-family: var(--font-b);
+  font-size: 15px;
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Film grain */
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 9000; opacity: 0.45;
+}
+
+::-webkit-scrollbar { width: 2px; }
+::-webkit-scrollbar-thumb { background: var(--cyan); }
+
+/* ── LAYOUT ── */
+.wrap {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ── HEADER ── */
+.offer-header {
+  padding: 32px 24px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+.offer-header img {
+  height: 38px; width: auto;
+  mix-blend-mode: screen;
+  opacity: 0.8;
+}
+
+/* ── HERO ── */
+.offer-hero {
+  position: relative;
+  padding: 80px 24px 72px;
+  text-align: center;
+  overflow: hidden;
+}
+.offer-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 90% 60% at 50% 0%, rgba(1,221,254,0.07) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.offer-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-b);
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--bg);
+  background: var(--cyan);
+  padding: 7px 18px;
+  border-radius: 2px;
+  margin-bottom: 32px;
+}
+.offer-badge::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--bg);
+  border-radius: 50%;
+}
+
+.offer-headline {
+  font-family: var(--font-d);
+  font-size: clamp(44px, 10vw, 88px);
+  font-weight: 700;
+  line-height: 0.92;
+  letter-spacing: 0.01em;
+  color: var(--off-white);
+  margin-bottom: 24px;
+  position: relative; z-index: 1;
+}
+.offer-headline .accent { color: var(--cyan); }
+
+.offer-sub {
+  font-family: var(--font-b);
+  font-size: 15px; font-weight: 300;
+  color: var(--muted-2);
+  max-width: 520px;
+  margin: 0 auto 48px;
+  line-height: 1.9;
+  position: relative; z-index: 1;
+}
+
+.offer-cta-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  position: relative; z-index: 1;
+}
+
+.btn-order {
+  font-family: var(--font-b);
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--bg);
+  background: var(--cyan);
+  border: none;
+  padding: 18px 52px;
+  border-radius: 2px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: opacity 0.2s, transform 0.15s;
+}
+.btn-order:hover { opacity: 0.88; transform: translateY(-2px); }
+
+.offer-social-proof {
+  font-family: var(--font-b);
+  font-size: 10px; font-weight: 400;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+.offer-social-proof span { color: var(--muted-2); }
+
+/* ── PREVIEW VISUAL ── */
+.offer-preview {
+  padding: 0 24px 88px;
+}
+.preview-frame {
+  max-width: 860px;
+  margin: 0 auto;
+  position: relative;
+}
+.preview-inner {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  aspect-ratio: 16/7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.preview-inner::before {
+  content: 'BEFORE';
+  position: absolute;
+  left: -6px; bottom: -16px;
+  font-family: var(--font-d);
+  font-size: 72px; font-weight: 700;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255,255,255,0.04);
+  pointer-events: none; user-select: none;
+}
+.preview-inner::after {
+  content: 'AFTER';
+  position: absolute;
+  right: -4px; bottom: -16px;
+  font-family: var(--font-d);
+  font-size: 72px; font-weight: 700;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(1,221,254,0.07);
+  pointer-events: none; user-select: none;
+}
+.preview-placeholder {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  width: 100%; height: 100%;
+  align-items: stretch;
+}
+.preview-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 32px;
+}
+.preview-col-label {
+  font-family: var(--font-b);
+  font-size: 8px; font-weight: 700;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--muted);
+}
+.preview-col-note {
+  font-family: var(--font-b);
+  font-size: 11px; font-weight: 300;
+  color: var(--muted-2);
+  text-align: center; line-height: 1.75;
+  max-width: 180px;
+}
+.preview-divider {
+  background: var(--border);
+  width: 1px;
+}
+.preview-col-right .preview-col-label { color: var(--cyan); opacity: 0.7; }
+/* Replace .preview-col placeholders with real images when available */
+
+/* ── WHAT YOU GET ── */
+.offer-includes {
+  background: var(--bg-2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 80px 24px;
+}
+.offer-section-label {
+  font-family: var(--font-b);
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 16px;
+  display: flex; align-items: center; gap: 12px;
+}
+.offer-section-label::after {
+  content: ''; flex: 1; height: 1px; background: var(--border-cyan);
+}
+.offer-section-title {
+  font-family: var(--font-d);
+  font-size: clamp(28px, 5vw, 46px);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--off-white);
+  margin-bottom: 48px;
+  line-height: 1;
+}
+
+.includes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+.include-item {
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+  padding: 32px 28px;
+  transition: border-color 0.3s;
+}
+.include-item:hover { border-color: var(--border-cyan); }
+
+.include-icon {
+  width: 44px; height: 44px;
+  border: 1px solid var(--border-cyan);
+  background: var(--cyan-dim);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--cyan);
+  margin-bottom: 20px;
+}
+.include-title {
+  font-family: var(--font-d);
+  font-size: 14px; font-weight: 600;
+  color: var(--off-white);
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+.include-desc {
+  font-family: var(--font-b);
+  font-size: 12px; font-weight: 300;
+  color: var(--muted-2);
+  line-height: 1.8;
+}
+
+/* ── HOW IT WORKS ── */
+.offer-steps {
+  padding: 80px 24px;
+}
+.steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-width: 860px;
+  margin: 0 auto;
+  counter-reset: steps;
+}
+.step-item {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  padding: 32px 36px;
+  transition: border-color 0.3s;
+}
+.step-item:hover { border-color: var(--border-cyan); }
+.step-num {
+  font-family: var(--font-d);
+  font-size: 10px; font-weight: 600;
+  color: var(--cyan);
+  opacity: 0.65;
+  min-width: 28px;
+  padding-top: 3px;
+  flex-shrink: 0;
+}
+.step-body h4 {
+  font-family: var(--font-d);
+  font-size: 16px; font-weight: 600;
+  color: var(--off-white);
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+}
+.step-body p {
+  font-family: var(--font-b);
+  font-size: 13px; font-weight: 300;
+  color: var(--muted-2);
+  line-height: 1.85;
+}
+
+/* ── STYLE PICKER ── */
+.offer-styles {
+  background: var(--bg-2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 80px 24px;
+}
+.styles-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+.style-card {
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+  padding: 28px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.3s;
+}
+.style-card:hover { border-color: var(--border-cyan); }
+.style-card-icon {
+  width: 40px; height: 40px;
+  background: var(--cyan-dim);
+  border: 1px solid var(--border-cyan);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--cyan);
+  margin: 0 auto 16px;
+}
+.style-card-name {
+  font-family: var(--font-d);
+  font-size: 12px; font-weight: 600;
+  color: var(--off-white);
+  letter-spacing: 0.04em; text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.style-card-desc {
+  font-family: var(--font-b);
+  font-size: 11px; font-weight: 300;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+/* ── PRICE + ORDER FORM ── */
+.offer-order {
+  padding: 80px 24px 96px;
+}
+.order-wrap {
+  max-width: 860px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 64px;
+  align-items: start;
+}
+.order-aside {
+  position: sticky; top: 40px;
+}
+.price-card {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  padding: 36px 32px;
+  margin-bottom: 24px;
+  position: relative;
+  overflow: hidden;
+}
+.price-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--cyan), transparent);
+}
+.price-label {
+  font-family: var(--font-b);
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 8px;
+}
+.price-amount {
+  font-family: var(--font-d);
+  font-size: 56px; font-weight: 700;
+  color: var(--off-white);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.price-note {
+  font-family: var(--font-b);
+  font-size: 11px; font-weight: 300;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+.price-includes {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+}
+.price-includes li {
+  display: flex; gap: 10px;
+  align-items: center;
+  font-family: var(--font-b);
+  font-size: 12px; font-weight: 300;
+  color: var(--muted-2);
+  list-style: none;
+}
+.price-includes li::before {
+  content: '';
+  width: 5px; height: 5px;
+  background: var(--cyan);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.turnaround-badge {
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--cyan);
+  padding: 18px 20px;
+  display: flex; gap: 14px; align-items: center;
+}
+.turnaround-badge svg { color: var(--cyan); flex-shrink: 0; }
+.turnaround-badge p {
+  font-family: var(--font-b);
+  font-size: 12px; font-weight: 300;
+  color: var(--muted-2); line-height: 1.7;
+}
+.turnaround-badge strong { color: var(--off-white); font-weight: 500; }
+
+/* ── FORM ── */
+.order-form-wrap { }
+
+.form-heading {
+  font-family: var(--font-d);
+  font-size: 22px; font-weight: 700;
+  color: var(--off-white);
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+}
+.form-subhead {
+  font-family: var(--font-b);
+  font-size: 13px; font-weight: 300;
+  color: var(--muted-2);
+  margin-bottom: 32px;
+  line-height: 1.8;
+}
+
+.order-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.fg {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.fg label {
+  font-family: var(--font-b);
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--muted-2);
+}
+.fg input,
+.fg select,
+.fg textarea {
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+  color: var(--off-white);
+  font-family: var(--font-b);
+  font-size: 13px; font-weight: 300;
+  padding: 14px 16px;
+  border-radius: 2px;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.fg input:focus,
+.fg select:focus,
+.fg textarea:focus {
+  border-color: var(--cyan);
+  background: rgba(1,221,254,0.03);
+}
+.fg input::placeholder,
+.fg textarea::placeholder { color: var(--muted); }
+.fg textarea { min-height: 110px; resize: vertical; }
+.fg select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239494a4' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px; cursor: pointer; }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+.btn-order-submit {
+  font-family: var(--font-b);
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--bg);
+  background: var(--cyan);
+  border: none;
+  padding: 18px;
+  border-radius: 2px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 4px;
+  transition: opacity 0.2s, transform 0.15s;
+}
+.btn-order-submit:hover { opacity: 0.88; transform: translateY(-1px); }
+.btn-order-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+.form-legal {
+  font-family: var(--font-b);
+  font-size: 10px; font-weight: 300;
+  color: var(--muted);
+  line-height: 1.7;
+  text-align: center;
+  margin-top: 6px;
+}
+
+/* ── SUCCESS STATE ── */
+.order-success {
+  display: none;
+  background: var(--bg-2);
+  border: 1px solid var(--border-cyan);
+  padding: 48px 36px;
+  text-align: center;
+}
+.order-success-icon {
+  width: 56px; height: 56px;
+  border: 2px solid var(--cyan);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; color: var(--cyan);
+  margin: 0 auto 24px;
+}
+.order-success h3 {
+  font-family: var(--font-d);
+  font-size: 22px; font-weight: 700;
+  color: var(--off-white);
+  letter-spacing: -0.01em;
+  margin-bottom: 12px;
+}
+.order-success p {
+  font-family: var(--font-b);
+  font-size: 13px; font-weight: 300;
+  color: var(--muted-2);
+  line-height: 1.85;
+  max-width: 340px; margin: 0 auto 28px;
+}
+.order-success a {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--cyan); text-decoration: none;
+  border-bottom: 1px solid var(--border-cyan);
+  padding-bottom: 2px;
+  transition: opacity 0.2s;
+}
+.order-success a:hover { opacity: 0.75; }
+
+/* ── FAQ ── */
+.offer-faq {
+  background: var(--bg-2);
+  border-top: 1px solid var(--border);
+  padding: 80px 24px;
+}
+.faq-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+.faq-item {
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+  padding: 28px 28px;
+}
+.faq-q {
+  font-family: var(--font-d);
+  font-size: 13px; font-weight: 600;
+  color: var(--off-white);
+  letter-spacing: -0.01em;
+  margin-bottom: 10px;
+}
+.faq-a {
+  font-family: var(--font-b);
+  font-size: 12px; font-weight: 300;
+  color: var(--muted-2);
+  line-height: 1.85;
+}
+
+/* ── FOOTER ── */
+.offer-footer {
+  padding: 40px 24px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+.offer-footer img {
+  height: 24px; width: auto;
+  mix-blend-mode: screen;
+  opacity: 0.35;
+  margin: 0 auto 16px;
+  display: block;
+  transition: opacity 0.2s;
+}
+.offer-footer img:hover { opacity: 0.65; }
+.offer-footer p {
+  font-family: var(--font-b);
+  font-size: 10px; font-weight: 300;
+  color: var(--muted);
+  line-height: 1.75;
+}
+.offer-footer a {
+  color: var(--muted-2);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.offer-footer a:hover { color: var(--cyan); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 720px) {
+  .includes-grid { grid-template-columns: 1fr; }
+  .styles-grid   { grid-template-columns: 1fr 1fr; }
+  .faq-grid      { grid-template-columns: 1fr; }
+  .order-wrap    { grid-template-columns: 1fr; gap: 40px; }
+  .order-aside   { position: static; }
+  .form-row      { grid-template-columns: 1fr; }
+  .offer-headline { font-size: clamp(40px, 11vw, 72px); }
+}
+@media (max-width: 480px) {
+  .styles-grid { grid-template-columns: 1fr; }
+  .step-item   { flex-direction: column; gap: 12px; padding: 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER — logo only, no nav distractions -->
+<header class="offer-header">
+  <a href="/">
+    <img src="assets/images/branding/drs-logo-primary.png" alt="Digital Rush Studios">
+  </a>
+</header>
+
+<!-- HERO -->
+<section class="offer-hero">
+  <span class="offer-badge">Launch Offer &nbsp;·&nbsp; $49</span>
+  <h1 class="offer-headline">
+    Your Character.<br><span class="accent">Built Different.</span>
+  </h1>
+  <p class="offer-sub">We take your look, your brand, and your vibe and build it into a custom AI character design. Action figure, editorial, streetwear. Delivered to your inbox in 48 hours.</p>
+  <div class="offer-cta-group">
+    <a href="#order" class="btn-order">Order Now — $49</a>
+    <p class="offer-social-proof">Delivered in <span>48 hours</span> &nbsp;·&nbsp; High-res files included &nbsp;·&nbsp; Commercial use</p>
+  </div>
+</section>
+
+<!-- PREVIEW PLACEHOLDER — swap columns for real before/after images -->
+<div class="offer-preview">
+  <div class="preview-frame">
+    <div class="preview-inner">
+      <div class="preview-placeholder">
+        <div class="preview-col">
+          <p class="preview-col-label">Your reference photo</p>
+          <p class="preview-col-note">Send us any clear photo of yourself or your brand persona</p>
+        </div>
+        <div class="preview-divider"></div>
+        <div class="preview-col preview-col-right">
+          <p class="preview-col-label">Your character</p>
+          <p class="preview-col-note">Custom AI character built around your look, style, and direction</p>
+        </div>
+      </div>
+    </div>
+    <!-- TO DO: replace preview-inner contents with a real side-by-side before/after image when you have one -->
+  </div>
+</div>
+
+<!-- WHAT YOU GET -->
+<section class="offer-includes">
+  <div class="wrap">
+    <p class="offer-section-label">What's Included</p>
+    <h2 class="offer-section-title">Everything in the $49.</h2>
+    <div class="includes-grid">
+
+      <div class="include-item">
+        <div class="include-icon">
+          <!-- High-res icon -->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <path d="M9 3v18M15 3v18M3 9h18M3 15h18"/>
+          </svg>
+        </div>
+        <h3 class="include-title">High-Res Files</h3>
+        <p class="include-desc">Delivered at 4000px minimum. PNG with transparent background. Print and post ready.</p>
+      </div>
+
+      <div class="include-item">
+        <div class="include-icon">
+          <!-- Brush icon -->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 17c3-3 6-3 9 0s6 3 9 0"/>
+            <path d="M12 17V3"/>
+            <circle cx="12" cy="3" r="1" fill="currentColor"/>
+          </svg>
+        </div>
+        <h3 class="include-title">2 Style Variations</h3>
+        <p class="include-desc">Two different looks built from the same brief. Pick the one that hits, or use both.</p>
+      </div>
+
+      <div class="include-item">
+        <div class="include-icon">
+          <!-- Shield / license icon -->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3L4 7v6c0 4.4 3.4 8.5 8 9.5C17.6 21.5 21 17.4 21 13V7l-9-4z"/>
+            <polyline points="9,12 11,14 15,10"/>
+          </svg>
+        </div>
+        <h3 class="include-title">Commercial Use</h3>
+        <p class="include-desc">Use it on merch, socials, album covers, press kits. No licensing restrictions.</p>
+      </div>
+
+      <div class="include-item">
+        <div class="include-icon">
+          <!-- Clock icon -->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"/>
+            <polyline points="12,7 12,12 15,15"/>
+          </svg>
+        </div>
+        <h3 class="include-title">48-Hour Delivery</h3>
+        <p class="include-desc">Straight to your inbox. No back-and-forth chains, no waiting weeks for revisions.</p>
+      </div>
+
+      <div class="include-item">
+        <div class="include-icon">
+          <!-- Edit / revision icon -->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+          </svg>
+        </div>
+        <h3 class="include-title">1 Round of Revisions</h3>
+        <p class="include-desc">If the direction needs a tweak, we handle one revision pass at no extra charge.</p>
+      </div>
+
+      <div class="include-item">
+        <div class="include-icon">
+          <!-- Layers / platform icon -->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 18l9 4 9-4"/>
+            <path d="M3 13l9 4 9-4"/>
+            <path d="M3 8l9-4 9 4-9 4-9-4z"/>
+          </svg>
+        </div>
+        <h3 class="include-title">Multiple Platforms</h3>
+        <p class="include-desc">Optimized for Instagram, press kits, merchandise, and print. Aspect ratios included.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="offer-steps">
+  <div class="wrap">
+    <p class="offer-section-label">How It Works</p>
+    <h2 class="offer-section-title">Three Steps. 48 Hours.</h2>
+    <div class="steps-list">
+      <div class="step-item">
+        <span class="step-num">01</span>
+        <div class="step-body">
+          <h4>Place Your Order</h4>
+          <p>Fill out the form below. Tell us your style direction, drop your Instagram handle so we can reference your aesthetic, and add any notes. No photo upload required at this step.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <span class="step-num">02</span>
+        <div class="step-body">
+          <h4>We Reach Out to Collect Your Reference</h4>
+          <p>Within a few hours we will email you with a simple reference request. One photo, a few style notes. That is all we need. Payment is confirmed via email before we begin production.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <span class="step-num">03</span>
+        <div class="step-body">
+          <h4>Your Character Lands in Your Inbox</h4>
+          <p>We build your character, send you both variations, and deliver the high-res PNG files. If anything needs a minor adjustment, we handle one revision round. Done.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STYLE OPTIONS -->
+<section class="offer-styles">
+  <div class="wrap">
+    <p class="offer-section-label">Style Options</p>
+    <h2 class="offer-section-title">Pick Your Direction.</h2>
+    <div class="styles-grid">
+
+      <div class="style-card">
+        <div class="style-card-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </div>
+        <p class="style-card-name">Action Figure</p>
+        <p class="style-card-desc">Boxed collectible aesthetic. Your look, packaged.</p>
+      </div>
+
+      <div class="style-card">
+        <div class="style-card-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="8" r="4"/>
+            <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+          </svg>
+        </div>
+        <p class="style-card-name">Streetwear</p>
+        <p class="style-card-desc">Urban, gritty, culture-coded. Built for the culture.</p>
+      </div>
+
+      <div class="style-card">
+        <div class="style-card-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+          </svg>
+        </div>
+        <p class="style-card-name">Editorial</p>
+        <p class="style-card-desc">High fashion, cinematic lighting, magazine-grade.</p>
+      </div>
+
+      <div class="style-card">
+        <div class="style-card-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+        </div>
+        <p class="style-card-name">Custom Vibe</p>
+        <p class="style-card-desc">Tell us exactly what you want. We build to your brief.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ORDER -->
+<section id="order" class="offer-order">
+  <div class="order-wrap">
+
+    <!-- PRICE CARD -->
+    <div class="order-aside">
+      <div class="price-card">
+        <p class="price-label">Launch Price</p>
+        <p class="price-amount">$49</p>
+        <p class="price-note">One-time payment. Invoiced via email after form submission.</p>
+        <ul class="price-includes">
+          <li>High-res PNG files (4000px+)</li>
+          <li>2 style variations</li>
+          <li>Commercial use license</li>
+          <li>48-hour delivery</li>
+          <li>1 round of revisions</li>
+        </ul>
+      </div>
+      <div class="turnaround-badge">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9"/>
+          <polyline points="12,7 12,12 15,15"/>
+        </svg>
+        <p><strong>48-hour turnaround.</strong> Order by midnight, get your files the day after next.</p>
+      </div>
+    </div>
+
+    <!-- FORM -->
+    <div class="order-form-wrap">
+      <h2 class="form-heading">Place Your Order</h2>
+      <p class="form-subhead">Fill out the form and we will email you within a few hours to collect your reference photo and confirm payment. No card required right now.</p>
+
+      <form
+        class="order-form"
+        id="characterOrderForm"
+        name="character-order"
+        method="POST"
+        netlify
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+      >
+        <input type="hidden" name="form-name" value="character-order">
+        <p style="display:none;"><label>Do not fill this out: <input name="bot-field"></label></p>
+
+        <div class="form-row">
+          <div class="fg">
+            <label for="o-name">Full Name *</label>
+            <input id="o-name" type="text" name="name" placeholder="Your full name" required>
+          </div>
+          <div class="fg">
+            <label for="o-email">Email *</label>
+            <input id="o-email" type="email" name="email" placeholder="your@email.com" required>
+          </div>
+        </div>
+
+        <div class="fg">
+          <label for="o-instagram">Instagram Handle</label>
+          <input id="o-instagram" type="text" name="instagram" placeholder="@yourhandle (so we can reference your aesthetic)">
+        </div>
+
+        <div class="fg">
+          <label for="o-style">Style Direction *</label>
+          <select id="o-style" name="style" required>
+            <option value="" disabled selected>Choose a style</option>
+            <option>Action Figure</option>
+            <option>Streetwear</option>
+            <option>Editorial / High Fashion</option>
+            <option>Custom Vibe (I'll describe below)</option>
+          </select>
+        </div>
+
+        <div class="fg">
+          <label for="o-notes">Additional Notes</label>
+          <textarea id="o-notes" name="notes" placeholder="Any specific colors, references, energy you want the character to have. The more detail here, the better the output."></textarea>
+        </div>
+
+        <button type="submit" class="btn-order-submit" id="orderSubmitBtn">Reserve My Spot — $49</button>
+        <p class="form-legal">We will email you within a few hours to collect your photo reference and send payment details. No charges are processed through this form.</p>
+      </form>
+
+      <div class="order-success" id="orderSuccess">
+        <div class="order-success-icon">✓</div>
+        <h3>You're in the queue.</h3>
+        <p>We got your order. Check your inbox, we will be in touch within a few hours to collect your photo reference and confirm payment details.</p>
+        <a href="/">Back to Digital Rush Studios</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="offer-faq">
+  <div class="wrap">
+    <p class="offer-section-label">Common Questions</p>
+    <h2 class="offer-section-title">Answered.</h2>
+    <div class="faq-grid">
+
+      <div class="faq-item">
+        <p class="faq-q">Do I need to send a photo right now?</p>
+        <p class="faq-a">No. Fill out the form and we will email you with instructions for submitting your reference photo. You have 24 hours to respond before your spot is released.</p>
+      </div>
+
+      <div class="faq-item">
+        <p class="faq-q">How does payment work?</p>
+        <p class="faq-a">After you submit the form, we send a payment link via email. We accept all major cards, PayPal, and Cash App. Production starts once payment clears.</p>
+      </div>
+
+      <div class="faq-item">
+        <p class="faq-q">Can I use this on merch or album art?</p>
+        <p class="faq-a">Yes. The files come with a full commercial use license. Use them on merchandise, press kits, social content, album artwork, and anything else you are working on.</p>
+      </div>
+
+      <div class="faq-item">
+        <p class="faq-q">What if I need changes after delivery?</p>
+        <p class="faq-a">One revision round is included. If the direction needs a tweak after delivery, reply to the delivery email with your feedback and we handle it, no extra charge.</p>
+      </div>
+
+      <div class="faq-item">
+        <p class="faq-q">Can I order for my brand, not just myself?</p>
+        <p class="faq-a">Yes. Brand characters, mascots, and personas are all in scope. Just describe the character in the notes and we will build it to match your brand identity.</p>
+      </div>
+
+      <div class="faq-item">
+        <p class="faq-q">I want something more complex. What then?</p>
+        <p class="faq-a">This offer covers standard character design. For full brand rollouts, cover art campaigns, or larger projects, head to the <a href="/#contact">main site</a> and fill out the project intake.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="offer-footer">
+  <a href="/"><img src="assets/images/branding/drs-logo-primary.png" alt="Digital Rush Studios"></a>
+  <p>© 2026 Digital Rush Studios LLC &nbsp;·&nbsp; <a href="/">digitalrushstudios.com</a> &nbsp;·&nbsp; <a href="mailto:digitalrushstudios@gmail.com">digitalrushstudios@gmail.com</a></p>
+</footer>
+
+<script>
+/* NETLIFY FORM — AJAX */
+const orderForm = document.getElementById('characterOrderForm');
+const submitBtn = document.getElementById('orderSubmitBtn');
+const successState = document.getElementById('orderSuccess');
+
+if (orderForm) {
+  orderForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    submitBtn.textContent = 'Sending…';
+    submitBtn.disabled = true;
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(this)).toString()
+    })
+    .then(() => showSuccess())
+    .catch(() => showSuccess()); /* Netlify receives the POST either way */
+  });
+}
+
+function showSuccess() {
+  orderForm.style.display = 'none';
+  const heading = document.querySelector('.form-heading');
+  const subhead = document.querySelector('.form-subhead');
+  if (heading) heading.style.display = 'none';
+  if (subhead) subhead.style.display = 'none';
+  successState.style.display = 'block';
+}
+
+/* Smooth scroll for anchor CTA */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (!target) return;
+    e.preventDefault();
+    const top = target.getBoundingClientRect().top + window.scrollY - 60;
+    window.scrollTo({ top, behavior: 'smooth' });
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+/* ─────────────────────────────────────────────
+   Digital Rush Studios — responsive.css
+   All @media breakpoints and responsive overrides.
+   Loaded after main.css in HTML.
+───────────────────────────────────────────── */
+
+/* ── Lightbox mobile ── */
+@media (max-width: 640px) {
+  .lb-stage img { max-width: 94vw; max-height: 70vh; }
+  .lb-prev { left: 8px; }
+  .lb-next { right: 8px; }
+  .lb-close { top: 14px; right: 14px; }
+}
+
+/* ── Tablet wide ── */
+@media (max-width: 1100px) {
+  /* Why DRS — collapse sticky layout a bit */
+  .why-layout { gap: 48px; }
+  /* Freebies — 2 columns */
+  .freebies-grid { grid-template-columns: 1fr 1fr; }
+  /* Lab email capture — stack */
+  .lab-email-capture { flex-direction: column; gap: 40px; padding: 48px 40px; }
+  /* Legacy process grid (unused) */
+  .process-grid { grid-template-columns: 1fr 1fr; gap: 48px 40px; }
+  .process-grid::before { display: none; }
+  .process-step { padding: 0; }
+  /* New icon cards */
+  .process-infographic { grid-template-columns: 1fr 1fr; }
+  /* Featured service card — revert to normal vertical layout */
+  .service-card--featured {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  .service-card--featured .svc-num   { grid-column: 1; grid-row: auto; margin-bottom: 22px; }
+  .service-card--featured .svc-title { grid-column: 1; grid-row: auto; margin-bottom: 14px; }
+  .service-card--featured .svc-desc  { grid-column: 1; grid-row: auto; margin-bottom: 28px; }
+  .service-card--featured .tags      { grid-column: 1; grid-row: auto; flex-direction: row; }
+  .service-card--featured .svc-link  { grid-column: 1; grid-row: auto; margin-top: 16px; }
+}
+
+/* ── Tablet / mobile nav ── */
+@media (max-width: 960px) {
+  nav { padding: 20px 24px; }
+  nav.scrolled { padding: 16px 24px; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+
+  .nav-links.open {
+    display: flex; flex-direction: column;
+    position: fixed; inset: 0;
+    background: rgba(7,7,9,0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 8050;
+    align-items: center; justify-content: center;
+    gap: 40px;
+  }
+  .nav-links.open a { font-size: 14px; }
+
+  .section { padding: 100px 24px; }
+  .section-header { margin-bottom: 56px; }
+  .culture-photos { grid-template-columns: 1fr 1fr; }
+  .hero-content { padding: 0 24px 80px; }
+  .hero-bottom { flex-direction: column; align-items: flex-start; gap: 32px; }
+  .hero-scroll-hint { bottom: 32px; }
+  .reel-section { padding: 0 24px 64px; }
+
+  /* Portfolio: 2-column grid on tablet */
+  .portfolio-grid { grid-template-columns: 1fr 1fr; }
+  /* Featured and closing stay full-width; standard items go 1-col each */
+  .p-item--featured,
+  .p-item--closing  { grid-column: span 2; }
+  .p-item:not(.p-item--featured):not(.p-item--closing) { grid-column: span 1; aspect-ratio: 1/1; }
+  /* Culture strip — stack on tablet */
+  .culture-strip-header { grid-template-columns: 1fr; gap: 20px; }
+  .culture-photos { grid-template-columns: 1fr 1fr; }
+
+  .portfolio-footer { flex-direction: column; align-items: flex-start; gap: 24px; padding: 32px; }
+
+  .problem-grid         { grid-template-columns: 1fr; gap: 2px; }
+  .services-grid        { grid-template-columns: 1fr; }
+  .process-grid         { grid-template-columns: 1fr; gap: 40px; }
+  .process-infographic  { grid-template-columns: 1fr; }
+  .shop-grid            { grid-template-columns: 1fr; }
+  .about-strip   { grid-template-columns: 1fr; gap: 56px; }
+  .contact-wrap  { grid-template-columns: 1fr; gap: 56px; }
+  .form-row      { grid-template-columns: 1fr; }
+
+  /* AI section — stack to single column */
+  .ai-packages-grid { grid-template-columns: 1fr; }
+  .ai-steps         { grid-template-columns: 1fr 1fr; }
+  .ai-steps::before { display: none; }
+  .ai-cta           { padding: 48px 24px; }
+
+  /* Why DRS — stack to single column on mobile */
+  .why-layout { grid-template-columns: 1fr; gap: 40px; }
+  .why-statement { position: static; }
+  /* Freebies — single column on mobile */
+  .freebies-grid { grid-template-columns: 1fr; }
+  /* Lab capture */
+  .lab-email-capture { padding: 40px 24px; }
+  .lab-form-row { flex-direction: column; }
+  .lab-form-row input { min-width: 100%; }
+
+  .cta-banner { padding: 80px 24px; }
+  .testimonial-section { padding: 80px 24px; }
+  .stats-bar { grid-template-columns: 1fr 1fr; }
+  .stat-item { border-right: none; border-bottom: 1px solid var(--border); padding: 40px 24px; }
+  .stat-item:nth-child(odd)  { border-right: 1px solid var(--border); }
+  .stat-item:last-child,
+  .stat-item:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+
+  footer { flex-direction: column; gap: 20px; text-align: center; padding: 32px 24px; }
+  .f-email { font-size: 12px; }
+  .f-links { justify-content: center; flex-wrap: wrap; }
+}
+
+/* ── Small mobile ── */
+@media (max-width: 480px) {
+  .hero-title { font-size: clamp(42px, 12vw, 60px); }
+  .stats-bar { grid-template-columns: 1fr 1fr; }
+  .hero-actions { flex-direction: column; width: 100%; }
+  .hero-actions .btn-primary,
+  .hero-actions .btn-ghost { width: 100%; text-align: center; }
+  .freebie-body .btn-primary,
+  .freebie-body .btn-ghost { width: 100%; text-align: center; }
+  .cta-banner-title { font-size: clamp(38px, 12vw, 58px); }
+  /* AI section */
+  .ai-steps { grid-template-columns: 1fr; }
+  .ai-cta-actions { flex-direction: column; width: 100%; }
+  .ai-cta-actions .btn-primary,
+  .ai-cta-actions .btn-ghost { width: 100%; text-align: center; }
+}
+
+/* ── Letter spacing tightening ── */
+.hero-title,
+.section-title,
+.cta-banner-title,
+.lab-capture-headline,
+.case-body h2 {
+  letter-spacing: -0.035em;
+}
+
+@media (max-width: 600px) {
+  .hero-title,
+  .section-title,
+  .cta-banner-title {
+    letter-spacing: -0.025em;
+  }
+}
+
+/* ── Case study card mobile ── */
+@media (max-width: 860px) {
+  .case-card {
+    grid-template-columns: 1fr;
+  }
+
+  .case-card img {
+    min-height: 320px;
+  }
+}
