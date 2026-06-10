@@ -1,9 +1,9 @@
 /* ─────────────────────────────────────────────
    Digital Rush Studios — animations.css
    All @keyframe definitions for the site.
-   Imported by main.css via HTML <link>.
 ───────────────────────────────────────────── */
 
+/* ── ENTRANCE ── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(26px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -14,12 +14,68 @@
   to   { opacity: 1; }
 }
 
-@keyframes scrollPulse {
-  0%, 100% { opacity: 0.3; transform: scaleY(1); }
-  50%       { opacity: 1;   transform: scaleY(1.2); }
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-16px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.94); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ── SCROLL INDICATOR ── */
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.25; transform: scaleY(1) translateY(0); }
+  50%       { opacity: 1;   transform: scaleY(1.25) translateY(2px); }
+}
+
+/* ── MARQUEE ── */
 @keyframes marqueeScroll {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
+}
+
+/* ── GLOW PULSE — for dots and accent elements ── */
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 6px var(--cyan-glow), 0 0 12px transparent;
+    opacity: 0.75;
+  }
+  50% {
+    box-shadow: 0 0 14px var(--cyan-glow), 0 0 28px rgba(1,221,254,0.10);
+    opacity: 1;
+  }
+}
+
+/* ── BORDER SHIMMER — sweeps across card top-edge on load ── */
+@keyframes lineReveal {
+  from { transform: scaleX(0); transform-origin: left; }
+  to   { transform: scaleX(1); transform-origin: left; }
+}
+
+/* ── FLOAT — subtle levitation for decorative elements ── */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-7px); }
+}
+
+/* ── SHIMMER — horizontal light sweep ── */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+/* ── STAT COUNTER ── */
+@keyframes countPop {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+
+/* ── CURSOR RING CLICK ── */
+@keyframes ringPop {
+  0%   { transform: translate(-50%,-50%) scale(1); }
+  50%  { transform: translate(-50%,-50%) scale(0.65); }
+  100% { transform: translate(-50%,-50%) scale(1); }
 }

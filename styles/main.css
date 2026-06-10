@@ -386,6 +386,58 @@ nav.scrolled {
   animation: scrollPulse 2.4s ease infinite;
 }
 
+/* ── HERO CONTENT — receives parallax transform from motion.js ── */
+.hero-content {
+  will-change: transform, opacity;
+  transition: transform 0.1s linear, opacity 0.1s linear;
+}
+
+/* ── STEP / AI DOTS — glow pulse ── */
+.step-dot,
+.ai-step-dot {
+  animation: glowPulse 2.4s ease-in-out infinite;
+}
+
+/* ── PROCESS CARD ICON — glow on hover ── */
+.process-card:hover .process-icon {
+  animation: glowPulse 1.8s ease-in-out infinite;
+}
+
+/* ── SERVICE CARD TOP LINE REVEAL ── */
+.service-card::after {
+  animation: none;
+}
+.service-card:hover::after {
+  animation: lineReveal 0.35s ease forwards;
+}
+
+/* ── CTA BANNER TITLE SHIMMER on hover ── */
+.cta-banner-title {
+  background: linear-gradient(
+    110deg,
+    var(--off-white) 40%,
+    rgba(1,221,254,0.75) 50%,
+    var(--off-white) 60%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background-position 0.6s ease;
+}
+.cta-banner-title .accent {
+  -webkit-text-fill-color: var(--cyan);
+}
+.cta-banner:hover .cta-banner-title {
+  animation: shimmer 2s linear infinite;
+}
+
+/* ── PORTFOLIO ITEM — keyboard focus ring ── */
+.p-item:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+}
+
 /* ─────────────────────────────────────────────
    BUTTONS
 ───────────────────────────────────────────── */
