@@ -588,16 +588,9 @@
       .form-footer { flex-direction:column; align-items:stretch; }
       .form-footer .btn { width:100%; justify-content:center; }
       .epk-grid { grid-template-columns:1fr; }
-      /* Hide iframes on small screens, show static placeholder */
-      .epk-preview iframe, .epk-feat-preview iframe { display:none; }
-      .epk-preview { aspect-ratio:16/7; background:var(--panel-2); }
-      .epk-feat-preview { height:160px; background:var(--panel-2); }
-      .epk-preview::before,.epk-feat-preview::before {
-        content:"Live site preview"; position:absolute; inset:0;
-        display:flex; align-items:center; justify-content:center;
-        color:var(--dim); font-family:'Satoshi',sans-serif; font-size:.8rem;
-        font-weight:500; letter-spacing:.12em; text-transform:uppercase;
-      }
+      /* Iframes stay visible on mobile — JS scales them */
+      .epk-preview { position:relative; overflow:hidden; }
+      .epk-feat-preview { position:relative; overflow:hidden; }
     }
     @media (max-width:480px) {
       .work-grid-3 { grid-template-columns:1fr; }
@@ -1144,20 +1137,25 @@
       // Featured Starborn
       const featPrev = document.getElementById('featPreview');
       const featFrame = document.getElementById('featIframe');
-      if (featPrev && featFrame) {
+      if (featPrev && featFrame && featPrev.offsetWidth > 0) {
         const s = featPrev.offsetWidth / 1440;
         featPrev.style.height = (860 * s) + 'px';
         featFrame.style.transform = `scale(${s})`;
+        featFrame.style.pointerEvents = 'none';
       }
       // Small EPK cards
       document.querySelectorAll('.epk-preview').forEach(prev => {
+        if (prev.offsetWidth === 0) return;
         const s = prev.offsetWidth / 1440;
         prev.style.height = (900 * s) + 'px';
         const iframe = prev.querySelector('iframe');
-        if (iframe) iframe.style.transform = `scale(${s})`;
+        if (iframe) { iframe.style.transform = `scale(${s})`; iframe.style.pointerEvents = 'none'; }
       });
     }
     scaleFrames();
+    /* Re-run after fonts/layout settle and after load */
+    setTimeout(scaleFrames, 300);
+    window.addEventListener('load', scaleFrames);
     window.addEventListener('resize', scaleFrames, { passive: true });
 
     /* ── NETLIFY FORM ── */
