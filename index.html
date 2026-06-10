@@ -247,15 +247,19 @@
       box-shadow:0 20px 60px rgba(0,0,0,.5),0 0 30px rgba(1,221,254,.06);
     }
     .wc-img { width:100%; overflow:hidden; flex-shrink:0; background:var(--panel-2); }
-    .wc-img.sq  { aspect-ratio:1/1; }
+    .wc-img.sq      { aspect-ratio:1/1; }
     .wc-img.wideish { aspect-ratio:4/3; }
+    .wc-img.flyer   { aspect-ratio:3/4; background:#0a0a0c; }
     .wc-img img {
       width:100%; height:100%; object-fit:cover;
       transform:scale(1.02);
       transition:transform .8s var(--ease),filter .8s var(--ease);
       filter:saturate(.88) contrast(1.06);
     }
-    .work-card:hover .wc-img img { transform:scale(1.09); filter:saturate(1.12) contrast(1.08); }
+    /* Flyer images show full — no crop */
+    .wc-img.flyer img { object-fit:contain; transform:none; padding:0; }
+    .work-card:hover .wc-img:not(.flyer) img { transform:scale(1.09); filter:saturate(1.12) contrast(1.08); }
+    .work-card:hover .wc-img.flyer img { filter:saturate(1.08) contrast(1.06); }
     .wc-info { padding:18px 20px 20px; border-top:1px solid var(--line); flex:1; }
     .wc-type {
       display:block; color:var(--accent); font-family:'Satoshi',sans-serif;
@@ -725,10 +729,10 @@
           </div>
         </div>
 
-        <!-- Branding + Event Row -->
+        <!-- Branding Row -->
         <div class="work-row">
-          <div class="row-label"><span>Branding &amp; Design</span></div>
-          <div class="work-grid-4">
+          <div class="row-label"><span>Brand Identity</span></div>
+          <div class="work-grid-3">
             <article class="work-card reveal">
               <div class="wc-img wideish"><img src="portfolio/linear-drive-brand-identity.png" alt="Linear Drive brand identity" loading="lazy" /></div>
               <div class="wc-info">
@@ -753,12 +757,35 @@
                 <p class="wc-note">Bold identity built for a brand that lives between performance and culture.</p>
               </div>
             </article>
-            <article class="work-card reveal reveal-d3">
-              <div class="wc-img wideish"><img src="portfolio/sushimania-3-event-design.png" alt="Settle the Score event design" loading="lazy" /></div>
+          </div>
+        </div>
+
+        <!-- Event Flyers Row -->
+        <div class="work-row">
+          <div class="row-label"><span>Event Flyers &amp; Promotion</span></div>
+          <div class="work-grid-3">
+            <article class="work-card reveal">
+              <div class="wc-img flyer"><img src="portfolio/sushimania-3-event-design.png" alt="Sushimania 3 event flyer" loading="lazy" /></div>
               <div class="wc-info">
                 <span class="wc-type">Event Branding</span>
                 <h3 class="wc-title">Settle the Score</h3>
                 <p class="wc-note">Battle league visuals made to give the card premium fight-night energy.</p>
+              </div>
+            </article>
+            <article class="work-card reveal reveal-d1">
+              <div class="wc-img flyer"><img src="portfolio/FYD Flyer.png" alt="Fight Yo Demons event flyer" loading="lazy" /></div>
+              <div class="wc-info">
+                <span class="wc-type">Event Flyer</span>
+                <h3 class="wc-title">Fight Yo Demons</h3>
+                <p class="wc-note">High-impact event promo built to pull attention and drive turnout.</p>
+              </div>
+            </article>
+            <article class="work-card reveal reveal-d2">
+              <div class="wc-img flyer"><img src="portfolio/DFTA_Flyer.png" alt="Don't Feed the Animals event flyer" loading="lazy" /></div>
+              <div class="wc-info">
+                <span class="wc-type">Event Flyer</span>
+                <h3 class="wc-title">Don't Feed the Animals</h3>
+                <p class="wc-note">Bold promotional design built to make the event impossible to scroll past.</p>
               </div>
             </article>
           </div>
