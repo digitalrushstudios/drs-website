@@ -7,44 +7,58 @@
 /* ── LOCAL FONTS ── */
 @font-face {
   font-family: 'ClashDisplay';
-  src: url('../assets/fonts/ClashDisplay_Complete/Fonts/WEB/fonts/ClashDisplay-Bold.woff2') format('woff2'),
-       url('../assets/fonts/ClashDisplay_Complete/Fonts/WEB/fonts/ClashDisplay-Bold.woff') format('woff');
+  src: url('../WEB/fonts/ClashDisplay-Bold.woff2') format('woff2'),
+       url('../WEB/fonts/ClashDisplay-Bold.woff') format('woff'),
+       url('../WEB/fonts/ClashDisplay-Bold.ttf') format('truetype');
   font-weight: 700; font-display: swap;
 }
 @font-face {
   font-family: 'ClashDisplay';
-  src: url('../assets/fonts/ClashDisplay_Complete/Fonts/WEB/fonts/ClashDisplay-Semibold.woff2') format('woff2'),
-       url('../assets/fonts/ClashDisplay_Complete/Fonts/WEB/fonts/ClashDisplay-Semibold.woff') format('woff');
+  src: url('../WEB/fonts/ClashDisplay-Semibold.woff2') format('woff2'),
+       url('../WEB/fonts/ClashDisplay-Semibold.woff') format('woff'),
+       url('../WEB/fonts/ClashDisplay-Semibold.ttf') format('truetype');
   font-weight: 600; font-display: swap;
 }
 @font-face {
   font-family: 'ClashDisplay';
-  src: url('../assets/fonts/ClashDisplay_Complete/Fonts/WEB/fonts/ClashDisplay-Medium.woff2') format('woff2'),
-       url('../assets/fonts/ClashDisplay_Complete/Fonts/WEB/fonts/ClashDisplay-Medium.woff') format('woff');
+  src: url('../WEB/fonts/ClashDisplay-Medium.woff2') format('woff2'),
+       url('../WEB/fonts/ClashDisplay-Medium.woff') format('woff'),
+       url('../WEB/fonts/ClashDisplay-Medium.ttf') format('truetype');
   font-weight: 500; font-display: swap;
 }
 @font-face {
-  font-family: 'Satoshi';
-  src: url('../assets/fonts/Satoshi_Complete/Fonts/WEB/fonts/Satoshi-Regular.woff2') format('woff2'),
-       url('../assets/fonts/Satoshi_Complete/Fonts/WEB/fonts/Satoshi-Regular.woff') format('woff');
+  font-family: 'ClashDisplay';
+  src: url('../WEB/fonts/ClashDisplay-Regular.woff2') format('woff2'),
+       url('../WEB/fonts/ClashDisplay-Regular.woff') format('woff'),
+       url('../WEB/fonts/ClashDisplay-Regular.ttf') format('truetype');
   font-weight: 400; font-display: swap;
 }
 @font-face {
   font-family: 'Satoshi';
-  src: url('../assets/fonts/Satoshi_Complete/Fonts/WEB/fonts/Satoshi-Light.woff2') format('woff2'),
-       url('../assets/fonts/Satoshi_Complete/Fonts/WEB/fonts/Satoshi-Light.woff') format('woff');
+  src: url('../WEB/fonts/Satoshi-Regular.woff2') format('woff2'),
+       url('../WEB/fonts/Satoshi-Regular.woff') format('woff'),
+       url('../WEB/fonts/Satoshi-Regular.ttf') format('truetype');
+  font-weight: 400; font-display: swap;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url('../WEB/fonts/Satoshi-Light.woff2') format('woff2'),
+       url('../WEB/fonts/Satoshi-Light.woff') format('woff'),
+       url('../WEB/fonts/Satoshi-Light.ttf') format('truetype');
   font-weight: 300; font-display: swap;
 }
 @font-face {
   font-family: 'Satoshi';
-  src: url('../assets/fonts/Satoshi_Complete/Fonts/WEB/fonts/Satoshi-Medium.woff2') format('woff2'),
-       url('../assets/fonts/Satoshi_Complete/Fonts/WEB/fonts/Satoshi-Medium.woff') format('woff');
+  src: url('../WEB/fonts/Satoshi-Medium.woff2') format('woff2'),
+       url('../WEB/fonts/Satoshi-Medium.woff') format('woff'),
+       url('../WEB/fonts/Satoshi-Medium.ttf') format('truetype');
   font-weight: 500; font-display: swap;
 }
 @font-face {
   font-family: 'Satoshi';
-  src: url('../assets/fonts/Satoshi_Complete/Fonts/WEB/fonts/Satoshi-Bold.woff2') format('woff2'),
-       url('../assets/fonts/Satoshi_Complete/Fonts/WEB/fonts/Satoshi-Bold.woff') format('woff');
+  src: url('../WEB/fonts/Satoshi-Bold.woff2') format('woff2'),
+       url('../WEB/fonts/Satoshi-Bold.woff') format('woff'),
+       url('../WEB/fonts/Satoshi-Bold.ttf') format('truetype');
   font-weight: 700; font-display: swap;
 }
 
@@ -384,6 +398,58 @@ nav.scrolled {
   width: 1px; height: 52px;
   background: linear-gradient(to bottom, var(--cyan), transparent);
   animation: scrollPulse 2.4s ease infinite;
+}
+
+/* ── HERO CONTENT — receives parallax transform from motion.js ── */
+.hero-content {
+  will-change: transform, opacity;
+  transition: transform 0.1s linear, opacity 0.1s linear;
+}
+
+/* ── STEP / AI DOTS — glow pulse ── */
+.step-dot,
+.ai-step-dot {
+  animation: glowPulse 2.4s ease-in-out infinite;
+}
+
+/* ── PROCESS CARD ICON — glow on hover ── */
+.process-card:hover .process-icon {
+  animation: glowPulse 1.8s ease-in-out infinite;
+}
+
+/* ── SERVICE CARD TOP LINE REVEAL ── */
+.service-card::after {
+  animation: none;
+}
+.service-card:hover::after {
+  animation: lineReveal 0.35s ease forwards;
+}
+
+/* ── CTA BANNER TITLE SHIMMER on hover ── */
+.cta-banner-title {
+  background: linear-gradient(
+    110deg,
+    var(--off-white) 40%,
+    rgba(1,221,254,0.75) 50%,
+    var(--off-white) 60%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background-position 0.6s ease;
+}
+.cta-banner-title .accent {
+  -webkit-text-fill-color: var(--cyan);
+}
+.cta-banner:hover .cta-banner-title {
+  animation: shimmer 2s linear infinite;
+}
+
+/* ── PORTFOLIO ITEM — keyboard focus ring ── */
+.p-item:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
 }
 
 /* ─────────────────────────────────────────────
