@@ -364,77 +364,155 @@
     /* ── WORK GRID ── */
     .work-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 16px;
       margin-top: 50px;
     }
     .work-card {
-      position: relative;
       border-radius: var(--r);
       overflow: hidden;
       border: 1px solid var(--line);
       background: var(--panel);
       cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      transition: border-color .35s, transform .35s var(--ease);
     }
-    .work-card.sq { aspect-ratio: 1/1; }
-    .work-card.tall { aspect-ratio: 4/5; }
-    .work-card img {
+    .work-card:hover { border-color: rgba(1,221,254,.22); transform: translateY(-3px); }
+    .work-card-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: var(--panel-2);
+    }
+    .work-card.sq .work-card-img { aspect-ratio: 1/1; }
+    .work-card-img img {
       width: 100%; height: 100%;
       object-fit: cover;
       transform: scale(1.02);
       transition: transform .75s var(--ease), filter .75s var(--ease);
       filter: saturate(.9) contrast(1.05);
     }
-    .work-card:hover img {
-      transform: scale(1.08);
+    .work-card:hover .work-card-img img {
+      transform: scale(1.07);
       filter: saturate(1.1) contrast(1.1);
     }
-    .work-overlay {
-      position: absolute; inset: auto 0 0;
-      padding: 28px 24px 24px;
-      background: linear-gradient(to top, rgba(0,0,0,.92) 0%, rgba(0,0,0,.6) 40%, transparent 100%);
-      transform: translateY(4px);
-      transition: transform .4s var(--ease);
+    .work-info {
+      padding: 20px 22px 22px;
+      border-top: 1px solid var(--line);
     }
-    .work-card:hover .work-overlay { transform: translateY(0); }
     .work-type {
       display: block;
       color: var(--accent);
       font-family: 'Satoshi', sans-serif;
       font-weight: 700;
-      font-size: .7rem;
-      letter-spacing: .18em;
+      font-size: .68rem;
+      letter-spacing: .2em;
       text-transform: uppercase;
       margin-bottom: 6px;
     }
     .work-title {
       font-family: 'ClashDisplay', sans-serif;
       font-weight: 700;
-      font-size: clamp(1.4rem, 2.2vw, 2.2rem);
+      font-size: clamp(1.3rem, 1.8vw, 1.9rem);
       letter-spacing: -.01em;
       line-height: .95;
     }
     .work-note {
-      color: rgba(255,255,255,.65);
+      color: var(--muted);
       font-size: .88rem;
       font-weight: 400;
-      letter-spacing: .02em;
-      line-height: 1.5;
-      margin-top: 8px;
+      letter-spacing: .01em;
+      line-height: 1.55;
+      margin-top: 7px;
     }
-    /* Shimmer border on hover */
-    .work-card::after {
-      content: "";
-      position: absolute; inset: 0;
+
+    /* ── EPK / WEBSITES SECTION ── */
+    .epk-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 50px;
+    }
+    .epk-card {
+      border: 1px solid var(--line);
       border-radius: var(--r);
-      border: 1px solid transparent;
-      background: linear-gradient(var(--panel), var(--panel)) padding-box,
-                  linear-gradient(135deg, var(--accent), transparent 50%) border-box;
-      opacity: 0;
-      transition: opacity .35s;
+      overflow: hidden;
+      background: var(--panel);
+      display: flex;
+      flex-direction: column;
+      transition: border-color .35s, transform .35s var(--ease);
+    }
+    .epk-card:hover { border-color: rgba(1,221,254,.25); transform: translateY(-4px); }
+    .epk-preview {
+      width: 100%;
+      aspect-ratio: 16/10;
+      overflow: hidden;
+      position: relative;
+      background: #000;
+      flex-shrink: 0;
+    }
+    .epk-preview iframe {
+      width: 1440px;
+      height: 900px;
+      border: none;
+      transform-origin: top left;
+      transform: scale(var(--iframe-scale, .278));
       pointer-events: none;
     }
-    .work-card:hover::after { opacity: 1; }
+    /* Dark overlay — lifts on card hover */
+    .epk-preview::after {
+      content: "";
+      position: absolute; inset: 0;
+      background: rgba(5,5,7,.18);
+      transition: background .35s;
+    }
+    .epk-card:hover .epk-preview::after { background: rgba(5,5,7,.05); }
+    .epk-info {
+      padding: 20px 22px 22px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .epk-type {
+      color: var(--accent);
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 700;
+      font-size: .68rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+    .epk-title {
+      font-family: 'ClashDisplay', sans-serif;
+      font-weight: 700;
+      font-size: 1.4rem;
+      letter-spacing: -.01em;
+      line-height: .95;
+    }
+    .epk-note {
+      color: var(--muted);
+      font-size: .88rem;
+      font-weight: 400;
+      line-height: 1.55;
+      letter-spacing: .01em;
+    }
+    .epk-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--accent);
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 700;
+      font-size: .82rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-top: 4px;
+      transition: gap .2s var(--ease);
+    }
+    .epk-link:hover { gap: 10px; }
+    .epk-link::after { content: "→"; }
 
     /* ── SERVICES ── */
     .offers-grid {
@@ -789,7 +867,8 @@
       .offer-card { min-height: auto; }
       .process-strip { grid-template-columns: repeat(2,1fr); }
       .lab-callout { flex-direction: column; align-items: flex-start; }
-      .work-grid { grid-template-columns: 1fr 1fr; }
+      .epk-grid { grid-template-columns: 1fr; }
+      .epk-preview iframe { --iframe-scale: .32; }
     }
     @media (max-width: 620px) {
       .wrap { width: calc(100% - 28px); }
@@ -818,6 +897,7 @@
       <button class="mobile-toggle" id="menuToggle" aria-label="Open menu">Menu</button>
       <ul class="nav-links" id="navLinks">
         <li><a href="#work">Work</a></li>
+        <li><a href="#epks">EPKs</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#process">Process</a></li>
         <li><a href="pages/creative-lab.html">Free Lab</a></li>
@@ -909,51 +989,90 @@
 
         <div class="work-grid">
           <article class="work-card sq reveal">
-            <img src="portfolio/bodybag-bobby-cover-art.png" alt="Bodybag Bobby campaign artwork" loading="lazy" />
-            <div class="work-overlay">
-              <span class="work-type">Album Campaign</span>
-              <h3 class="work-title">Bodybag Bobby</h3>
-              <p class="work-note">A darker campaign identity built to make the release feel heavy and impossible to ignore.</p>
+            <div class="work-card-img">
+              <img src="portfolio/geda-k-cover-art.png" alt="Geda K album artwork" loading="lazy" />
             </div>
-          </article>
-          <article class="work-card sq reveal reveal-d1">
-            <img src="portfolio/geda-k-cover-art.png" alt="Geda K album artwork" loading="lazy" />
-            <div class="work-overlay">
+            <div class="work-info">
               <span class="work-type">Cover Art</span>
               <h3 class="work-title">Geda K</h3>
               <p class="work-note">Artwork direction built around presence, movement, and artist identity.</p>
             </div>
           </article>
-          <article class="work-card sq reveal reveal-d2">
-            <img src="portfolio/Ant_Live_-_Double_Up_Cover_Art_4.png" alt="Ant Live — Double Up cover artwork" loading="lazy" />
-            <div class="work-overlay">
+          <article class="work-card sq reveal reveal-d1">
+            <div class="work-card-img">
+              <img src="portfolio/Ant_Live_-_Double_Up_Cover_Art_4.png" alt="Ant Live — Double Up cover artwork" loading="lazy" />
+            </div>
+            <div class="work-info">
               <span class="work-type">Cover Art</span>
               <h3 class="work-title">Ant Live</h3>
               <p class="work-note">Cover art built to give the single a cinematic, culture-ready presence.</p>
             </div>
           </article>
-          <article class="work-card tall reveal">
-            <img src="portfolio/sushimania-3-event-design.png" alt="Battle rap event design" loading="lazy" />
-            <div class="work-overlay">
+          <article class="work-card reveal">
+            <div class="work-card-img">
+              <img src="portfolio/sushimania-3-event-design.png" alt="Battle rap event design" loading="lazy" />
+            </div>
+            <div class="work-info">
               <span class="work-type">Event Branding</span>
               <h3 class="work-title">Settle the Score</h3>
               <p class="work-note">Battle league visuals made to give the card premium fight-night energy.</p>
             </div>
           </article>
-          <article class="work-card tall reveal reveal-d1">
-            <img src="portfolio/felice-ferano-brand-identity.png" alt="Felice Ferano brand identity" loading="lazy" />
-            <div class="work-overlay">
+          <article class="work-card reveal reveal-d1">
+            <div class="work-card-img">
+              <img src="portfolio/elite-kinetx-brand-identity.png" alt="Elite Kinetx brand identity" loading="lazy" />
+            </div>
+            <div class="work-info">
               <span class="work-type">Brand Identity</span>
-              <h3 class="work-title">Felice Ferano</h3>
-              <p class="work-note">Identity system for an independent artist building a bigger visual presence.</p>
+              <h3 class="work-title">Elite Kinetx</h3>
+              <p class="work-note">A bold identity system built for a brand that lives between performance and culture.</p>
             </div>
           </article>
-          <article class="work-card tall reveal reveal-d2">
-            <img src="portfolio/linear-drive-brand-identity.png" alt="Linear Drive brand identity" loading="lazy" />
-            <div class="work-overlay">
-              <span class="work-type">Startup Identity</span>
-              <h3 class="work-title">Linear Drive</h3>
-              <p class="work-note">A modern brand system built around motion, clarity, and momentum.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── EPK / WEBSITES ── -->
+    <section class="section" id="epks">
+      <div class="wrap">
+        <p class="eyebrow reveal">Websites &amp; EPKs</p>
+        <h2 class="section-heading reveal">Full sites built for artists.</h2>
+        <p class="section-copy reveal">Custom websites and electronic press kits designed and developed for artists — built to convert, stream, and make an impression before a single word is read.</p>
+
+        <div class="epk-grid">
+          <article class="epk-card reveal">
+            <div class="epk-preview">
+              <iframe src="https://shaketaylor.netlify.app/" title="Shake Taylor EPK" loading="lazy" scrolling="no" tabindex="-1" aria-hidden="true"></iframe>
+            </div>
+            <div class="epk-info">
+              <span class="epk-type">Artist EPK</span>
+              <h3 class="epk-title">Shake Taylor</h3>
+              <p class="epk-note">Full EPK site built for an independent artist — bio, music, press, and booking all in one polished package.</p>
+              <a href="https://shaketaylor.netlify.app/" class="epk-link" target="_blank" rel="noopener">View Live Site</a>
+            </div>
+          </article>
+
+          <article class="epk-card reveal reveal-d1">
+            <div class="epk-preview">
+              <iframe src="https://antlive-epk.netlify.app/" title="Ant Live EPK" loading="lazy" scrolling="no" tabindex="-1" aria-hidden="true"></iframe>
+            </div>
+            <div class="epk-info">
+              <span class="epk-type">Artist EPK</span>
+              <h3 class="epk-title">Ant Live</h3>
+              <p class="epk-note">Custom EPK for Ant Live — featuring music embeds, press section, and a cinematic visual presentation.</p>
+              <a href="https://antlive-epk.netlify.app/" class="epk-link" target="_blank" rel="noopener">View Live Site</a>
+            </div>
+          </article>
+
+          <article class="epk-card reveal reveal-d2">
+            <div class="epk-preview">
+              <iframe src="https://gedak-epk.netlify.app/" title="Geda K EPK" loading="lazy" scrolling="no" tabindex="-1" aria-hidden="true"></iframe>
+            </div>
+            <div class="epk-info">
+              <span class="epk-type">Artist EPK</span>
+              <h3 class="epk-title">Geda K</h3>
+              <p class="epk-note">Full-featured EPK for Geda K — press kit, streaming links, visuals, and artist story built for industry attention.</p>
+              <a href="https://gedak-epk.netlify.app/" class="epk-link" target="_blank" rel="noopener">View Live Site</a>
             </div>
           </article>
         </div>
@@ -1230,6 +1349,18 @@
         form.submit();
       }
     });
+
+    /* ── EPK IFRAME SCALE ── */
+    function scaleEpkFrames() {
+      document.querySelectorAll('.epk-preview').forEach(preview => {
+        const scale = preview.offsetWidth / 1440;
+        preview.style.height = (900 * scale) + 'px';
+        const iframe = preview.querySelector('iframe');
+        if (iframe) iframe.style.transform = `scale(${scale})`;
+      });
+    }
+    scaleEpkFrames();
+    window.addEventListener('resize', scaleEpkFrames);
 
     /* ── WORK CARD HOVER GLOW ── */
     document.querySelectorAll('.work-card').forEach(card => {
