@@ -1,0 +1,5 @@
+# Digital Rush Studios — Netlify Redirects
+# Old URL → New URL (301 permanent redirect for SEO continuity)
+
+/creative-lab.html        /pages/creative-lab.html    301
+/case-studies.html        /pages/case-studies.html    301
